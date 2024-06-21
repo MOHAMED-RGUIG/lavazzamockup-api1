@@ -19,18 +19,18 @@ const userRoute = require('./routes/userRoute');
 const ordersRoute = require('./routes/ordersRoute');
 
 //const cartsRoute = require('./routes/cartsRoute');
-app.use('/api/products/',productsRoute);
-app.use('/api/users/',userRoute);
+app.use('https://lavazzamockup-api1.onrender.com/api/products/',productsRoute);
+app.use('https://lavazzamockup-api1.onrender.com//api/users/',userRoute);
 
-app.use('/api/orders/',ordersRoute);
+app.use('https://lavazzamockup-api1.onrender.com//api/orders/',ordersRoute);
 
-//app.use('/api/carts/',cartsRoute);
-app.get("/",async (req,res)=>{
+//app.use('https://lavazzamockup-api1.onrender.com//api/carts/',cartsRoute);
+app.get("https://lavazzamockup-api1.onrender.com/",async (req,res)=>{
     await res.send("server working!!!");
 });
 
 /*
-app.get('/getproducts', async (req, res) => {
+app.get('https://lavazzamockup-api1.onrender.com/getproducts', async (req, res) => {
     try {
         const docs = await Product.find({}).exec();
         res.send(docs);
