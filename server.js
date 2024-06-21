@@ -26,7 +26,7 @@ app.use('https://lavazzamockup-api1.onrender.com/api/orders/',ordersRoute);
 
 //app.use('https://lavazzamockup-api1.onrender.com/api/carts/',cartsRoute);
 app.get("/",async (req,res)=>{
-
+await res.send(Access-Control-allow-Credentials","true")
     await res.send("server working!!!");
 });
 
