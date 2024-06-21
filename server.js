@@ -1,33 +1,32 @@
 const express = require("express");
-const cors = require('cors');
-const dotenv = require("dotenv");
-const db = require("./db");
 
-const Product = require('./models/productModel');
+const Product = require('./models/productModel')
+require("dotenv").config()
+
+const cors = require('cors')
+const db = require("./db")
+
+const app = express();
+app.use(cors({
+    origin:["https://lavazzamockup5.vercel.app/"],
+    methods:["POST","GET"],
+    credentials:true}));
+
+app.use(express.json());
+
 const productsRoute = require('./routes/productsRoute');
 const userRoute = require('./routes/userRoute');
 const ordersRoute = require('./routes/ordersRoute');
 
-dotenv.config();
+//const cartsRoute = require('./routes/cartsRoute');
+app.use('/api/products/',productsRoute);
+app.use('/api/users/',userRoute);
 
-const app = express();
+app.use('/api/orders/',ordersRoute);
 
-// Use CORS middleware
-app.use(cors({
-    origin: "https://lavazzamockup7.onrender.com",
-    methods: ["POST", "GET"],
-    credentials: true
-}));
-
-app.use(express.json());
-
-// Use relative paths for the routes
-app.use('/api/products', productsRoute);
-app.use('/api/users', userRoute);
-app.use('/api/orders', ordersRoute);
-
-app.get("/", (req, res) => {
-    res.send("Server working!!!");
+//app.use('/api/carts/',cartsRoute);
+app.get("/",async (req,res)=>{
+    await res.send("server working!!!");
 });
 
 /*
