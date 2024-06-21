@@ -1,33 +1,33 @@
 const express = require("express");
+const cors = require('cors');
+const dotenv = require("dotenv");
+const db = require("./db");
 
-const Product = require('./models/productModel')
-require("dotenv").config()
-
-const cors = require('cors')
-const db = require("./db")
-
-const app = express();
-app.use(cors({
-    origin:["https://lavazzamockup7.onrender.com/"],
-    methods:["POST","GET"],
-    credentials:true}));
-
-app.use(express.json());
-
+const Product = require('./models/productModel');
 const productsRoute = require('./routes/productsRoute');
 const userRoute = require('./routes/userRoute');
 const ordersRoute = require('./routes/ordersRoute');
 
-//const cartsRoute = require('./routes/cartsRoute');
-app.use('https://lavazzamockup-api1.onrender.com/api/products/',productsRoute);
-app.use('https://lavazzamockup-api1.onrender.com/api/users/',userRoute);
+dotenv.config();
 
-app.use('https://lavazzamockup-api1.onrender.com/api/orders/',ordersRoute);
+const app = express();
 
-//app.use('https://lavazzamockup-api1.onrender.com/api/carts/',cartsRoute);
-app.get("/",async (req,res)=>{
-await res.send(Access-Control-allow-Credentials","true")
-    await res.send("server working!!!");
+// Use CORS middleware
+app.use(cors({
+    origin: "https://lavazzamockup7.onrender.com",
+    methods: ["POST", "GET"],
+    credentials: true
+}));
+
+app.use(express.json());
+
+// Use relative paths for the routes
+app.use('/api/products', productsRoute);
+app.use('/api/users', userRoute);
+app.use('/api/orders', ordersRoute);
+
+app.get("/", (req, res) => {
+    res.send("Server working!!!");
 });
 
 /*
