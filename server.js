@@ -8,7 +8,7 @@ const db = require("./db")
 
 const app = express();
 app.use(cors({
-    origin:["https://lavazzamockup5.vercel.app/"],
+    origin:["https://lavazzamockup7.onrender.com/"],
     methods:["POST","GET"],
     credentials:true}));
 
@@ -19,13 +19,14 @@ const userRoute = require('./routes/userRoute');
 const ordersRoute = require('./routes/ordersRoute');
 
 //const cartsRoute = require('./routes/cartsRoute');
-app.use('/api/products/',productsRoute);
-app.use('/api/users/',userRoute);
+app.use('https://lavazzamockup-api1.onrender.com/api/products/',productsRoute);
+app.use('https://lavazzamockup-api1.onrender.com/api/users/',userRoute);
 
-app.use('/api/orders/',ordersRoute);
+app.use('https://lavazzamockup-api1.onrender.com/api/orders/',ordersRoute);
 
-//app.use('/api/carts/',cartsRoute);
+//app.use('https://lavazzamockup-api1.onrender.com/api/carts/',cartsRoute);
 app.get("/",async (req,res)=>{
+await res.send(Access-Control-allow-Credentials","true")
     await res.send("server working!!!");
 });
 
@@ -43,4 +44,4 @@ app.get('/getproducts', async (req, res) => {
 
 
 
-app.listen(process.env.PORT, () =>`server running on port `);
+app.listen(process.env.PORT, () =>server running on port );
