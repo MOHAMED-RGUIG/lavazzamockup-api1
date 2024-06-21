@@ -1,51 +1,41 @@
 const express = require("express");
-
-const Product = require('./models/productModel')
-require("dotenv").config()
-
-const cors = require('cors')
-const db = require("./db")
 const path = require('path');
-const app = express();
-app.use(cors({
-    origin:["https://lavazzamockup7.onrender.com"],
-    methods:["POST","GET"],
-    credentials:true}));
+const cors = require('cors');
+require("dotenv").config();
 
-app.use(express.json());
+const Product = require('./models/productModel');
+const db = require("./db");
 
 const productsRoute = require('./routes/productsRoute');
 const userRoute = require('./routes/userRoute');
 const ordersRoute = require('./routes/ordersRoute');
+// const cartsRoute = require('./routes/cartsRoute');
 
-//const cartsRoute = require('./routes/cartsRoute');
-app.use('/api/products/',productsRoute);
-app.use('/api/users/',userRoute);
+const app = express();
 
-app.use('/api/orders/',ordersRoute);
+// Use CORS middleware
+app.use(cors({
+    origin: "https://lavazzamockup7.onrender.com",
+    methods: ["POST", "GET"],
+    credentials: true
+}));
+
+app.use(express.json());
+
+// Use relative paths for the routes
+app.use('/api/products', productsRoute);
+app.use('/api/users', userRoute);
+app.use('/api/orders', ordersRoute);
+// app.use('/api/carts', cartsRoute);
+
+// Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-// Catch-all handler to serve the React app for any unknown routes
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
-//app.use('/api/carts/',cartsRoute);
-app.get("/",async (req,res)=>{
-await res.send(Access-Control-Allow-Credentials","true")
-    await res.send("server working!!!");
-});
-
-/*
-app.get('/getproducts', async (req, res) => {
-    try {
-        const docs = await Product.find({}).exec();
-        res.send(docs);
-    } catch (err) {
-        console.log(err);
-        res.status(500).send('Error fetching products');
-    }
-});*/
-
 
 
 
