@@ -25,12 +25,13 @@ app.use('https://lavazzamockup-api1.onrender.com//api/users/',userRoute);
 app.use('https://lavazzamockup-api1.onrender.com//api/orders/',ordersRoute);
 
 //app.use('https://lavazzamockup-api1.onrender.com//api/carts/',cartsRoute);
-app.get("https://lavazzamockup-api1.onrender.com/",async (req,res)=>{
+app.get("/",async (req,res)=>{
+    await res.setHeader(Access-Control-Allow-Credentials","true");
     await res.send("server working!!!");
 });
 
 /*
-app.get('https://lavazzamockup-api1.onrender.com/getproducts', async (req, res) => {
+app.get('/getproducts', async (req, res) => {
     try {
         const docs = await Product.find({}).exec();
         res.send(docs);
