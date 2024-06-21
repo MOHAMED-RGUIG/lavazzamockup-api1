@@ -26,7 +26,7 @@ app.use('/api/orders/',ordersRoute);
 
 //app.use('/api/carts/',cartsRoute);
 app.get("/",async (req,res)=>{
-await res.send(Access-Control-allow-Credentials","true")
+await res.send(Access-Control-Allow-Credentials","true")
     await res.send("server working!!!");
 });
 
