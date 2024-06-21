@@ -20,11 +20,11 @@ const ordersRoute = require('./routes/ordersRoute');
 
 //const cartsRoute = require('./routes/cartsRoute');
 app.use('https://lavazzamockup-api1.onrender.com/api/products/',productsRoute);
-app.use('https://lavazzamockup-api1.onrender.com//api/users/',userRoute);
+app.use('https://lavazzamockup-api1.onrender.com/api/users/',userRoute);
 
-app.use('https://lavazzamockup-api1.onrender.com//api/orders/',ordersRoute);
+app.use('https://lavazzamockup-api1.onrender.com/api/orders/',ordersRoute);
 
-//app.use('https://lavazzamockup-api1.onrender.com//api/carts/',cartsRoute);
+//app.use('https://lavazzamockup-api1.onrender.com/api/carts/',cartsRoute);
 app.get("/",async (req,res)=>{
 
     await res.send("server working!!!");
