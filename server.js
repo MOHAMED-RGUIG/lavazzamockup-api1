@@ -8,7 +8,7 @@ const db = require("./db")
 
 const app = express();
 app.use(cors({
-    origin:["https://lavazzamockup7.onrender.com"],
+    origin:["https://lavazzamockup11.onrender.com"],
     methods:["POST","GET"],
     credentials:true}));
 
